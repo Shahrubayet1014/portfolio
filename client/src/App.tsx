@@ -1,27 +1,40 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
+import AdminMessages from "@/pages/admin/Messages";
+import AdminOverview from "@/pages/admin/Overview";
+import AdminProcess from "@/pages/admin/Process";
+import AdminProfile from "@/pages/admin/Profile";
+import AdminProjects from "@/pages/admin/Projects";
+import AdminServices from "@/pages/admin/Services";
+import AdminSkills from "@/pages/admin/Skills";
+import AdminSocial from "@/pages/admin/Social";
+import AdminTestimonials from "@/pages/admin/Testimonials";
+import AdminTools from "@/pages/admin/Tools";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 
-
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
+      <Route path="/" component={Home} />
+      <Route path="/admin" component={AdminOverview} />
+      <Route path="/admin/profile" component={AdminProfile} />
+      <Route path="/admin/projects" component={AdminProjects} />
+      <Route path="/admin/services" component={AdminServices} />
+      <Route path="/admin/process" component={AdminProcess} />
+      <Route path="/admin/skills" component={AdminSkills} />
+      <Route path="/admin/tools" component={AdminTools} />
+      <Route path="/admin/testimonials" component={AdminTestimonials} />
+      <Route path="/admin/social" component={AdminSocial} />
+      <Route path="/admin/messages" component={AdminMessages} />
+      <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
   );
 }
-
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 function App() {
   return (
