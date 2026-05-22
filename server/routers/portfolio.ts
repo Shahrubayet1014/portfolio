@@ -102,6 +102,7 @@ const siteSettingsInput = z.object({
   skillsHeadline: z.string().nullable().optional(),
   toolsHeadline: z.string().nullable().optional(),
   toolsIntro: z.string().nullable().optional(),
+  certificationsHeadline: z.string().nullable().optional(),
   contactHeadline: z.string().nullable().optional(),
   contactBody: z.string().nullable().optional(),
   contactEmail: z.string().email(),

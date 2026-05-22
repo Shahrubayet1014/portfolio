@@ -74,6 +74,7 @@ export const siteSettings = pgTable("siteSettings", {
   skillsHeadline: text("skillsHeadline"),
   toolsHeadline: text("toolsHeadline"),
   toolsIntro: text("toolsIntro"),
+  certificationsHeadline: text("certificationsHeadline"),
 
   // Contact section
   contactHeadline: text("contactHeadline"),

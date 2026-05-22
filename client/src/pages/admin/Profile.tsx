@@ -110,6 +110,7 @@ export default function ProfileAdmin() {
       skillsHeadline: form.skillsHeadline ?? null,
       toolsHeadline: form.toolsHeadline ?? null,
       toolsIntro: form.toolsIntro ?? null,
+      certificationsHeadline: form.certificationsHeadline ?? null,
       contactHeadline: form.contactHeadline ?? null,
       contactBody: form.contactBody ?? null,
       contactEmail: form.contactEmail ?? "",
@@ -269,6 +270,7 @@ export default function ProfileAdmin() {
             <FieldArea label="Skills headline" v={form.skillsHeadline} on={v => set("skillsHeadline", v)} rows={2} />
             <FieldArea label="Tools headline" v={form.toolsHeadline} on={v => set("toolsHeadline", v)} rows={2} />
             <FieldArea label="Tools intro" v={form.toolsIntro} on={v => set("toolsIntro", v)} rows={2} />
+            <FieldArea label="Certifications headline" v={form.certificationsHeadline} on={v => set("certificationsHeadline", v)} rows={2} />
           </CardContent>
         </Card>
 

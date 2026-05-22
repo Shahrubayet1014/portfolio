@@ -354,6 +354,7 @@ function Work() {
 
 function Certifications() {
   const { data: certs = [] } = trpc.portfolio.listCertifications.useQuery();
+  const { data: settings } = trpc.portfolio.getSiteSettings.useQuery();
   if (!certs.length) return null;
   return (
     <section id="certifications" className="py-28 md:py-36 border-t border-border relative overflow-hidden">
@@ -365,7 +366,7 @@ function Certifications() {
         <Reveal>
           <div className="text-[11px] tracking-[0.32em] uppercase text-muted-foreground">(Certifications)</div>
           <h2 className="mt-5 font-display text-5xl md:text-7xl leading-[0.95] max-w-3xl">
-            Credentials &amp; achievements
+            <FormattedText text={settings?.certificationsHeadline ?? "Credentials & achievements"} />
           </h2>
         </Reveal>
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
