@@ -72,12 +72,13 @@ export async function storagePut(
     const ext = path.extname(key);
     const publicId = path.basename(key, ext);
     const folder = path.dirname(key) !== "." ? path.dirname(key) : "portfolio";
+    const isRaw = [".pdf", ".zip", ".txt", ".csv", ".doc", ".docx"].includes(ext.toLowerCase());
 
     try {
       const result = await cloudinary.uploader.upload(dataUri, {
-        public_id: publicId,
+        public_id: isRaw ? path.basename(key) : publicId,
         folder: folder,
-        resource_type: "auto",
+        resource_type: isRaw ? "raw" : "auto",
       });
       return { key: result.public_id, url: result.secure_url };
     } catch (error) {
@@ -180,4 +181,3 @@ export async function storageGetSignedUrl(relKey: string): Promise<string> {
   const { url } = (await resp.json()) as { url: string };
   return url;
 }
-
