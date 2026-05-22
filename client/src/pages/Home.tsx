@@ -303,8 +303,11 @@ function Work() {
                         className="project-img absolute inset-0 w-full h-full object-cover"
                       />
                     ) : null}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-90" />
-                    <div className="absolute top-5 left-5 right-5 flex items-center justify-between text-[11px] tracking-[0.22em] uppercase">
+                    {/* Dark overlays to ensure text visibility regardless of image color */}
+                    <div className="absolute inset-0 bg-background/30 group-hover:bg-background/10 transition-colors duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-95" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-transparent" />
+                    <div className="absolute top-5 left-5 right-5 flex items-center justify-between text-[11px] tracking-[0.22em] uppercase drop-shadow-md">
                       <span className="text-foreground/80">{p.category}</span>
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
                         View
