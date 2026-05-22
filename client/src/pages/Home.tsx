@@ -10,6 +10,7 @@ import { trpc } from "@/lib/trpc";
 import type { SiteSettings } from "@shared/types";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { FormattedText } from "@/components/FormattedText";
 import Lenis from "lenis";
 import { toast } from "sonner";
 
@@ -32,12 +33,12 @@ function Hero({ s }: { s: SiteSettings }) {
             </Reveal>
             <Reveal delay={120}>
               <h1 className="mt-6 font-display font-bold leading-[1.02] tracking-tight text-5xl md:text-6xl lg:text-[64px] whitespace-pre-line">
-                {s.heroHeadline}
+                <FormattedText text={s.heroHeadline || "Digital Designer & Art Director."} />
               </h1>
             </Reveal>
             <Reveal delay={240}>
               <p className="mt-6 max-w-md text-[15px] leading-relaxed text-muted-foreground text-pretty whitespace-pre-line">
-                {s.heroDescription}
+                <FormattedText text={s.heroDescription || ""} />
               </p>
             </Reveal>
             <Reveal delay={340}>
@@ -105,8 +106,8 @@ function Hero({ s }: { s: SiteSettings }) {
             <div className="mt-20 md:mt-28 hairline pt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
               {features.map(([t, d]) => (
                 <div key={t}>
-                  <div className="text-[11px] uppercase tracking-[0.22em] font-medium">{t}</div>
-                  <div className="mt-3 text-[13px] leading-relaxed text-muted-foreground">{d}</div>
+                  <div className="text-[11px] uppercase tracking-[0.22em] font-medium"><FormattedText text={t} /></div>
+                  <div className="mt-3 text-[13px] leading-relaxed text-muted-foreground"><FormattedText text={d} /></div>
                 </div>
               ))}
             </div>
@@ -129,11 +130,13 @@ function Tools() {
             <div>
               <div className="text-[11px] tracking-[0.32em] uppercase text-muted-foreground">(Tools)</div>
               <h2 className="mt-4 font-display text-3xl md:text-4xl leading-tight max-w-xl">
-                {settings?.toolsHeadline ?? "Software I design with"}
+                <FormattedText text={settings?.toolsHeadline ?? "Software I design with"} />
               </h2>
             </div>
             {settings?.toolsIntro ? (
-              <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">{settings.toolsIntro}</p>
+              <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">
+                <FormattedText text={settings.toolsIntro} />
+              </p>
             ) : null}
           </div>
         </Reveal>
@@ -182,7 +185,7 @@ function About({ s }: { s: SiteSettings }) {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="mt-6 font-display text-5xl md:text-7xl leading-[0.95] whitespace-pre-line">
-              {s.aboutHeadline}
+              <FormattedText text={s.aboutHeadline || ""} />
             </h2>
           </Reveal>
         </div>
@@ -190,7 +193,7 @@ function About({ s }: { s: SiteSettings }) {
           <Reveal delay={150}>
             {s.aboutBody.split(/\n{2,}/).map((p: string, i: number) => (
               <p key={i} className={`text-[15px] leading-relaxed text-muted-foreground ${i > 0 ? "mt-5" : ""}`}>
-                {p}
+                <FormattedText text={p} />
               </p>
             ))}
           </Reveal>
@@ -226,13 +229,15 @@ function Services() {
             <div>
               <div className="text-[11px] tracking-[0.32em] uppercase text-muted-foreground">(Services)</div>
               <h2 className="mt-5 font-display text-5xl md:text-7xl leading-[0.95] max-w-2xl">
-                {settings?.servicesHeadline ?? "What I can build for you"}
+                <FormattedText text={settings?.servicesHeadline ?? "What I can build for you"} />
               </h2>
             </div>
           </Reveal>
           {settings?.servicesIntro ? (
             <Reveal delay={150}>
-              <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">{settings.servicesIntro}</p>
+              <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">
+                <FormattedText text={settings.servicesIntro} />
+              </p>
             </Reveal>
           ) : null}
         </div>
@@ -248,8 +253,12 @@ function Services() {
                     </svg>
                   </div>
                 </div>
-                <h3 className="mt-12 font-display text-3xl md:text-4xl">{svc.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{svc.description}</p>
+                <h3 className="mt-12 font-display text-3xl md:text-4xl">
+                  <FormattedText text={svc.title} />
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  <FormattedText text={svc.description || ""} />
+                </p>
                 <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </div>
             </Reveal>
@@ -272,7 +281,7 @@ function Work() {
             <div>
               <div className="text-[11px] tracking-[0.32em] uppercase text-muted-foreground">(Selected Work)</div>
               <h2 className="mt-5 font-display text-5xl md:text-7xl leading-[0.95]">
-                {settings?.workHeadline ?? "Featured projects"}
+                <FormattedText text={settings?.workHeadline ?? "Featured projects"} />
               </h2>
             </div>
           </Reveal>
@@ -304,7 +313,7 @@ function Work() {
                       />
                     ) : null}
                     {/* Gradient overlay only covering the bottom half */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent from-0% via-40% to-70% opacity-95" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent from-0% via-20% to-60% opacity-95" />
                     <div className="absolute top-5 left-5 right-5 flex items-center justify-between text-[11px] tracking-[0.22em] uppercase drop-shadow-md">
                       <span className="text-foreground/80">{p.category}</span>
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
@@ -439,11 +448,11 @@ function Process() {
           <Reveal>
             <div className="text-[11px] tracking-[0.32em] uppercase text-muted-foreground">(Process)</div>
             <h2 className="mt-5 font-display text-5xl md:text-6xl leading-[0.95]">
-              {settings?.processHeadline ?? "A streamlined process"}
+              <FormattedText text={settings?.processHeadline ?? "A streamlined process"} />
             </h2>
             {settings?.processIntro ? (
               <p className="mt-6 text-sm text-muted-foreground max-w-sm leading-relaxed">
-                {settings.processIntro}
+                <FormattedText text={settings.processIntro} />
               </p>
             ) : null}
           </Reveal>
@@ -456,10 +465,10 @@ function Process() {
                   {p.number}
                 </span>
                 <h3 className="col-span-10 md:col-span-4 font-display text-3xl md:text-4xl transition-colors group-hover:text-accent">
-                  {p.title}
+                  <FormattedText text={p.title} />
                 </h3>
                 <p className="col-span-12 md:col-span-7 text-sm text-muted-foreground leading-relaxed">
-                  {p.description}
+                  <FormattedText text={p.description || ""} />
                 </p>
               </li>
             </Reveal>
@@ -481,7 +490,7 @@ function Testimonials() {
         <Reveal>
           <div className="text-[11px] tracking-[0.32em] uppercase text-muted-foreground">(Words)</div>
           <h2 className="mt-5 font-display text-5xl md:text-7xl leading-[0.95] max-w-3xl">
-            {settings?.testimonialsHeadline ?? "Kind things people have said"}
+            <FormattedText text={settings?.testimonialsHeadline ?? "Kind things people have said"} />
           </h2>
         </Reveal>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -532,7 +541,7 @@ function Skills() {
           <Reveal>
             <div className="text-[11px] tracking-[0.32em] uppercase text-muted-foreground">(Toolkit)</div>
             <h2 className="mt-5 font-display text-5xl md:text-6xl leading-[0.95]">
-              {settings?.skillsHeadline ?? "Skills sharpened over years"}
+              <FormattedText text={settings?.skillsHeadline ?? "Skills sharpened over years"} />
             </h2>
           </Reveal>
         </div>
@@ -582,12 +591,14 @@ function Contact({ s }: { s: SiteSettings }) {
         </Reveal>
         <Reveal delay={100}>
           <h2 className="mt-6 font-display text-6xl md:text-[10vw] leading-[0.9] whitespace-pre-line">
-            {s.contactHeadline ?? "Let's make something great"}
+            <FormattedText text={s.contactHeadline ?? "Let's make something great"} />
           </h2>
         </Reveal>
         {s.contactBody ? (
           <Reveal delay={200}>
-            <p className="mt-8 max-w-lg mx-auto text-muted-foreground">{s.contactBody}</p>
+            <p className="mt-8 max-w-lg mx-auto text-muted-foreground">
+              <FormattedText text={s.contactBody} />
+            </p>
           </Reveal>
         ) : null}
         <Reveal delay={300}>

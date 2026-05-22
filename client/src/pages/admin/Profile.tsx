@@ -128,6 +128,10 @@ export default function ProfileAdmin() {
             <h1 className="text-2xl font-semibold tracking-tight">Profile & Hero</h1>
             <p className="text-sm text-muted-foreground mt-1">
               Branding, hero copy, about story, contact info and footer.
+              <br />
+              <span className="text-xs text-accent mt-1 inline-block opacity-80">
+                💡 Pro tip: Use <code>[accent]text[/accent]</code> or <code>[color=#ff0000]text[/color]</code> anywhere to colorize specific words!
+              </span>
             </p>
           </div>
           <Button onClick={handleSave} disabled={updateMut.isPending}>
@@ -154,7 +158,7 @@ export default function ProfileAdmin() {
           <CardContent className="grid grid-cols-1 gap-4">
             <Field label="Eyebrow" v={form.heroEyebrow} on={v => set("heroEyebrow", v)} />
             <FieldArea
-              label="Headline (use [italic]…[/italic] is not yet supported — write plain text)"
+              label="Headline"
               v={form.heroHeadline}
               on={v => set("heroHeadline", v)}
               rows={2}
