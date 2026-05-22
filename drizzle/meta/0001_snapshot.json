@@ -1,6 +1,6 @@
 {
-  "id": "fc5a1f00-8300-4179-b342-5fc31fc63327",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "dc2a4a72-f7d6-46bf-8570-a87220133981",
+  "prevId": "fc5a1f00-8300-4179-b342-5fc31fc63327",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -782,6 +782,18 @@
           "primaryKey": false,
           "notNull": true
         },
+        "username": {
+          "name": "username",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "passwordHash": {
+          "name": "passwordHash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
         "name": {
           "name": "name",
           "type": "text",
@@ -839,6 +851,13 @@
           "nullsNotDistinct": false,
           "columns": [
             "openId"
+          ]
+        },
+        "users_username_unique": {
+          "name": "users_username_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "username"
           ]
         }
       },

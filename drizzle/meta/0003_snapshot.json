@@ -1,9 +1,98 @@
 {
-  "id": "fc5a1f00-8300-4179-b342-5fc31fc63327",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "93b79456-9186-4711-bbd6-4bbe87df7824",
+  "prevId": "48648b90-dcf5-4281-84c7-321b317bf3e5",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.certifications": {
+      "name": "certifications",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "issuer": {
+          "name": "issuer",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "issueDate": {
+          "name": "issueDate",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "credentialId": {
+          "name": "credentialId",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "credentialUrl": {
+          "name": "credentialUrl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "imageUrl": {
+          "name": "imageUrl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sortOrder": {
+          "name": "sortOrder",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "published": {
+          "name": "published",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.contactMessages": {
       "name": "contactMessages",
       "schema": "",
@@ -727,7 +816,13 @@
           "name": "slug",
           "type": "varchar(120)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
+        },
+        "imageUrl": {
+          "name": "imageUrl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         },
         "sortOrder": {
           "name": "sortOrder",
@@ -781,6 +876,18 @@
           "type": "varchar(64)",
           "primaryKey": false,
           "notNull": true
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "passwordHash": {
+          "name": "passwordHash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         },
         "name": {
           "name": "name",
@@ -839,6 +946,13 @@
           "nullsNotDistinct": false,
           "columns": [
             "openId"
+          ]
+        },
+        "users_username_unique": {
+          "name": "users_username_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "username"
           ]
         }
       },
