@@ -170,15 +170,7 @@ export default function ProfileAdmin() {
                 />
               </div>
               <div>
-                <Label className="mb-2 block">CV / Resume file</Label>
-                <ImageUploader
-                  folder="cv"
-                  accept="application/pdf"
-                  label="Upload CV (PDF)"
-                  value={form.cvUrl}
-                  onChange={v => set("cvUrl", v)}
-                  compact
-                />
+                <Field label="CV / Resume Link (Google Drive, Dropbox, etc.)" v={form.cvUrl ?? ""} on={v => set("cvUrl", v)} />
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
