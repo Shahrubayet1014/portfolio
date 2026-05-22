@@ -21,11 +21,15 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 const SPAN_OPTIONS = [
-  { value: "md:col-span-1 md:row-span-1", label: "1 × 1 (small)" },
-  { value: "md:col-span-2 md:row-span-1", label: "2 × 1 (wide)" },
-  { value: "md:col-span-1 md:row-span-2", label: "1 × 2 (tall)" },
-  { value: "md:col-span-2 md:row-span-2", label: "2 × 2 (large)" },
-  { value: "md:col-span-3 md:row-span-1", label: "3 × 1 (full width)" },
+  { value: "md:col-span-1 md:row-span-1", label: "1 × 1 (small box)" },
+  { value: "md:col-span-2 md:row-span-1", label: "2 × 1 (wide box)" },
+  { value: "md:col-span-1 md:row-span-2", label: "1 × 2 (tall box)" },
+  { value: "md:col-span-2 md:row-span-2", label: "2 × 2 (large square)" },
+  { value: "md:col-span-1 md:row-span-3", label: "1 × 3 (skyscraper)" },
+  { value: "md:col-span-2 md:row-span-3", label: "2 × 3 (vertical giant)" },
+  { value: "md:col-span-3 md:row-span-1", label: "3 × 1 (full width banner)" },
+  { value: "md:col-span-3 md:row-span-2", label: "3 × 2 (hero size)" },
+  { value: "md:col-span-3 md:row-span-3", label: "3 × 3 (massive)" },
 ];
 
 type FormState = {

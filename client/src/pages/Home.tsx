@@ -283,6 +283,8 @@ function Work() {
               <h2 className="mt-5 font-display text-5xl md:text-7xl leading-[0.95]">
                 <FormattedText text={settings?.workHeadline ?? "Featured projects"} />
               </h2>
+              {/* Tailwind safelist for dynamic grid spans from the database */}
+              <div className="hidden md:col-span-1 md:col-span-2 md:col-span-3 md:row-span-1 md:row-span-2 md:row-span-3" />
             </div>
           </Reveal>
           <Reveal delay={150} className="hidden md:block">
