@@ -9,6 +9,7 @@ import { trpc } from "@/lib/trpc";
 import { Loader2, Plus, Save, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { RichField } from "@/components/admin/RichField";
 
 type HeroFeature = [string, string];
 type AboutStat = { value: string; label: string };
@@ -145,9 +146,9 @@ export default function ProfileAdmin() {
             <CardTitle>Branding</CardTitle>
           </CardHeader>
           <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Field label="Brand name" v={form.brandName} on={v => set("brandName", v)} />
-            <Field label="Owner name" v={form.ownerName} on={v => set("ownerName", v)} />
-            <Field label="Location" v={form.location} on={v => set("location", v)} />
+            <RichField label="Brand name" value={form.brandName} onChange={v => set("brandName", v)} />
+            <RichField label="Owner name" value={form.ownerName} onChange={v => set("ownerName", v)} />
+            <RichField label="Location" value={form.location} onChange={v => set("location", v)} />
           </CardContent>
         </Card>
 
@@ -156,7 +157,7 @@ export default function ProfileAdmin() {
             <CardTitle>Hero section</CardTitle>
           </CardHeader>
           <CardContent className="grid grid-cols-1 gap-4">
-            <Field label="Eyebrow" v={form.heroEyebrow} on={v => set("heroEyebrow", v)} />
+            <RichField label="Eyebrow" value={form.heroEyebrow} onChange={v => set("heroEyebrow", v)} />
             <FieldArea
               label="Headline"
               v={form.heroHeadline}
@@ -218,7 +219,7 @@ export default function ProfileAdmin() {
             <CardTitle>About section</CardTitle>
           </CardHeader>
           <CardContent className="grid grid-cols-1 gap-4">
-            <Field label="Eyebrow" v={form.aboutEyebrow} on={v => set("aboutEyebrow", v)} />
+            <RichField label="Eyebrow" value={form.aboutEyebrow} onChange={v => set("aboutEyebrow", v)} />
             <FieldArea label="Headline" v={form.aboutHeadline} on={v => set("aboutHeadline", v)} rows={2} />
             <FieldArea
               label="Body (paragraphs separated by blank line)"
@@ -290,7 +291,7 @@ export default function ProfileAdmin() {
             <CardTitle>Footer</CardTitle>
           </CardHeader>
           <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Field label="Footer copyright" v={form.footerCopyright} on={v => set("footerCopyright", v)} />
+            <RichField label="Footer copyright" value={form.footerCopyright} onChange={v => set("footerCopyright", v)} />
           </CardContent>
         </Card>
 
@@ -325,10 +326,5 @@ function FieldArea({
   on: (v: string) => void;
   rows?: number;
 }) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <Label className="text-xs uppercase tracking-wider text-muted-foreground">{label}</Label>
-      <Textarea value={v ?? ""} rows={rows} onChange={e => on(e.target.value)} />
-    </div>
-  );
+  return <RichField label={label} value={v} onChange={on} rows={rows} multiline />;
 }

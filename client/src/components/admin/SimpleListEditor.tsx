@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Textarea } from "@/components/ui/textarea";
+import { RichField } from "@/components/admin/RichField";
 import { Loader2, Pencil, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -115,18 +115,19 @@ export default function SimpleListEditor<T extends ListItem>({
                       folder={title.toLowerCase()}
                     />
                   ) : fd.type === "textarea" ? (
-                    <Textarea
-                      rows={fd.rows ?? 3}
-                      placeholder={fd.placeholder}
+                    <RichField
+                      label=""
+                      multiline={true}
                       value={form[fd.key] ?? ""}
-                      onChange={e => setForm((f: any) => ({ ...f, [fd.key]: e.target.value }))}
+                      onChange={v => setForm((f: any) => ({ ...f, [fd.key]: v }))}
+                      rows={4}
                     />
                   ) : (
-                    <Input
-                      type={fd.type === "number" ? "number" : "text"}
-                      placeholder={fd.placeholder}
+                    <RichField
+                      label=""
+                      multiline={false}
                       value={form[fd.key] ?? ""}
-                      onChange={e => setForm((f: any) => ({ ...f, [fd.key]: e.target.value }))}
+                      onChange={v => setForm((f: any) => ({ ...f, [fd.key]: v }))}
                     />
                   )}
                 </div>
