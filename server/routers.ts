@@ -1,13 +1,13 @@
-import { COOKIE_NAME, ONE_YEAR_MS } from "../shared/const";
-import { getSessionCookieOptions } from "./_core/cookies";
-import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
-import { portfolioRouter } from "./routers/portfolio";
+import { COOKIE_NAME, ONE_YEAR_MS } from "../shared/const.js";
+import { getSessionCookieOptions } from "./_core/cookies.js";
+import { systemRouter } from "./_core/systemRouter.js";
+import { publicProcedure, router } from "./_core/trpc.js";
+import { portfolioRouter } from "./routers/portfolio.js";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { getUserByUsername } from "./db";
-import { verifyPassword } from "./utils/auth";
-import { sdk } from "./_core/sdk";
+import { getUserByUsername } from "./db.js";
+import { verifyPassword } from "./utils/auth.js";
+import { sdk } from "./_core/sdk.js";
 
 export const appRouter = router({
   system: systemRouter,

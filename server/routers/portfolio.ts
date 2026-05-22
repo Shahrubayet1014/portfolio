@@ -1,8 +1,8 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import * as db from "../db";
-import { storagePut } from "../storage";
-import { adminProcedure, publicProcedure, router } from "../_core/trpc";
+import * as db from "../db.js";
+import { storagePut } from "../storage.js";
+import { adminProcedure, publicProcedure, router } from "../_core/trpc.js";
 
 /* ---------- input schemas ---------- */
 

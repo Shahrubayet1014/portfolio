@@ -1,9 +1,9 @@
 import "dotenv/config";
 import express from "express";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { registerStorageProxy } from "./_core/storageProxy";
-import { appRouter } from "./routers";
-import { createContext } from "./_core/context";
+import { registerStorageProxy } from "./_core/storageProxy.js";
+import { appRouter } from "./routers.js";
+import { createContext } from "./_core/context.js";
 
 const app = express();
 

@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
-import { InsertUser, users } from "../drizzle/schema";
-import { ENV } from './_core/env';
-import { hashPassword } from "./utils/auth";
+import { InsertUser, users } from "../drizzle/schema.js";
+import { ENV } from "./_core/env.js";
+import { hashPassword } from "./utils/auth.js";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -165,7 +165,7 @@ import {
   tools,
   certifications,
   InsertCertification,
-} from "../drizzle/schema";
+} from "../drizzle/schema.js";
 
 /* ----- siteSettings (singleton id=1) ----- */
 export async function getSiteSettings() {
